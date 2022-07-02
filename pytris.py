@@ -1,5 +1,3 @@
-# PYTRIS™ Copyright (c) 2017 Jason Kim All Rights Reserved.
-
 import pygame
 from pygame.locals import *
 import operator
