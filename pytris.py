@@ -590,7 +590,6 @@ class Pytris:
 
     # Returns true if turning right is possible
     def is_turnable_r(self, x, y):
-        print(self.rotation)
         if self.rotation != 3:
             grid = tetrimino.mino_map[self.mino - 1][self.rotation + 1]
         else:
@@ -607,7 +606,6 @@ class Pytris:
 
     # Returns true if turning left is possible
     def is_turnable_l(self, x, y):
-        print(self.rotation)
         if self.rotation != 3:
             grid = tetrimino.mino_map[self.mino - 1][self.rotation + 1]
         else:
