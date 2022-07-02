@@ -3,9 +3,11 @@ from pygame.locals import *
 import operator
 import random
 from pathlib import Path
+from genetic_ai import Genetic_AI
         
 from ui_variables import UI_variables
 from mino import *
+from genetic_ai import Genetic_AI
 
 class Pytris:
     block_size = 17 # Height, width of single block
@@ -41,7 +43,7 @@ class Pytris:
         self.hold = False        # Hold status
         self.hold_mino = None    # Holded mino
 
-        self.ai = None  # Agent playing (None = human player)
+        self.ai: Genetic_AI = None  # Agent playing (None = human player)
 
         self.name_location = 0
         self.name = [65, 65, 65]
@@ -54,7 +56,7 @@ class Pytris:
         self.leaders = sorted(self.leaders.items(), key=operator.itemgetter(1), reverse=True)
 
 
-    def __init__(self, ai=None, headless=False):
+    def __init__(self, ai:Genetic_AI=None, headless=False):
         self.default_values()
         if ai:
             self.ai = ai
@@ -149,13 +151,10 @@ class Pytris:
                                 else:
                                     self.start = False
                                     self.game_over = True
-                                    print(f"{'='*20}")
-                                    print("{:^20s}".format("Game stats"))
-                                    print(f"{'-'*20}")
-                                    print(f"Score: {self.score}")
-                                    print(f"Lines: {self.lines}")
-                                    print(f"{'='*20}")
+                                    self.print_stats()
                                     pygame.time.set_timer(pygame.USEREVENT, 1)
+                                    if self.ai:
+                                        return # TODO: Should probs return something here
                             else:
                                 self.bottom_count += 1
 
@@ -637,6 +636,14 @@ class Pytris:
         i = random.randrange(len(self.bag))      # get random index
         self.bag[i], self.bag[-1] = self.bag[-1], self.bag[i]   # swap with the last element
         return self.bag.pop()                    # pop last element O(1)
+
+    def print_stats(self):
+        print(f"{'='*20}")
+        print("{:^20s}".format("Game stats"))
+        print(f"{'-'*20}")
+        print(f"Score: {self.score}")
+        print(f"Lines: {self.lines}")
+        print(f"{'='*20}")
 
 
 if __name__ == "__main__":
