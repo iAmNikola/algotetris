@@ -685,18 +685,8 @@ class Pytris:
 
 if __name__ == "__main__":
     AI_RUN = True
-    top_gene_weights = [
-            -0.7255216469812669,    # aggregated_height
-            -0.734674596688063,     # n_holes
-            -0.44155695690797003,   # n_cols_with_holes
-            -0.012949057576052692,  # bumpiness
-            -0.6886875589233459,    # n_pits
-            0.8379280068158563,     # deepest_well
-            -0.8355259931400796,    # row_transitions
-            0.3028779001998809,     # col_transitions
-            0.22814520433580232     # lines_cleared
-        ]
-    top_gene_weights = [0.5501233868775208, -0.45474448395384504, -0.032619056589323896, -0.4054268211077717, -0.42503073375086964, -0.12941049261789878, 0.15512310177762675, -1.4142555391926974, 0.8136523639225275]
+    #########           aggregated_height       n_holes             n_cols_with_holes       bumpiness               n_pits              deepest_well        row_transitions     col_transitions     lines_cleared
+    top_gene_weights = [-0.0279403731905886, -0.49807861137057663, -0.003623541808306773, -0.35611209635594987, -2.261251957450068, -0.30014145220851784, 0.0726731091781297, -7.944738378738265, 0.10771263721098738]
     if AI_RUN:
         game = Pytris(ai=Genetic_AI(genotype=np.array(top_gene_weights)))
     else:
