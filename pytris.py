@@ -696,8 +696,9 @@ if __name__ == "__main__":
             0.3028779001998809,     # col_transitions
             0.22814520433580232     # lines_cleared
         ]
+    top_gene_weights = [0.5501233868775208, -0.45474448395384504, -0.032619056589323896, -0.4054268211077717, -0.42503073375086964, -0.12941049261789878, 0.15512310177762675, -1.4142555391926974, 0.8136523639225275]
     if AI_RUN:
         game = Pytris(ai=Genetic_AI(genotype=np.array(top_gene_weights)))
     else:
         game = Pytris()
-    game.run_headless()
+    game.run()
